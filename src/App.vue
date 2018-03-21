@@ -2,8 +2,11 @@
   <div id="app">
     <div class="container">
       <div class="row">
-        <div class="col-auto">
-          <multiselect></multiselect>
+        <div class="col-6">
+          <multiselect type="named"></multiselect>
+        </div>
+        <div class="col-6">
+          <multiselect type="counter"></multiselect>
         </div>
       </div>
     </div>
