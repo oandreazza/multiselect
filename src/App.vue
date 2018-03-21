@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <div class="container">
-      <multivalored></multivalored>
       <div class="row">
-        <div class="col-6">
+        <div class="col-auto">
           <multiselect></multiselect>
         </div>
       </div>
