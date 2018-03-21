@@ -3,13 +3,25 @@
     <div class="container">
       <div class="row">
         <div class="col-6">
-          <multiselect type="named"></multiselect>
+          <div class="card">
+            <div class="card-body">
+              <multiselect type="named"></multiselect>
+            </div>
+          </div>
         </div>
         <div class="col-6">
-          <multiselect type="counter"></multiselect>
+          <div class="card">
+            <div class="card-body">
+              <multiselect type="counter"></multiselect>
+            </div>
+          </div>
         </div>
         <div class="col-6">
-          <multiselectOrdered></multiselectOrdered>
+          <div class="card">
+            <div class="card-body">
+              <multiselectOrdered></multiselectOrdered>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -26,8 +38,15 @@ export default {
   data() {
     return {
       msg: "Welcome to Your Vue.js App"
-    };
+    }
   }
 };
 </script>
+
+<style>
+  .card {
+    margin-top: 15px;
+  }
+</style>
+
 

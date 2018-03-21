@@ -1,8 +1,9 @@
 <template>
   <div class="c-multiselect form-group">
+    <label>Devedores</label>
     <input class="c-multiselect__input form-control" type="text" placeholder="Filtre pela descrição">
-    <div class="c-multiselect__list-items-container">
-      Selecionados
+    <div class="c-multiselect__list-items-container -padding-large">
+      <label>Selecionados</label>
       <ul class="list-group">
         <li v-for="(item, index) in selectedList" :key="index" 
           class="c-multiselect__list-item list-group-item list-group-item-action" @click="toggleItem(index, item)">
@@ -12,7 +13,9 @@
           </div>
         </li>
       </ul>
-      Não selecionados
+    </div>
+    <div class="c-multiselect__list-items-container -padding-large">
+      <label>Não selecionados</label>
       <ul class="list-group">
         <li v-for="(item, index) in unselectedList" :key="index" 
           class="c-multiselect__list-item list-group-item list-group-item-action" @click="toggleItem(index, item)">
@@ -39,7 +42,7 @@ export default {
         { id: 6, description: 'Emerson', checked: false, order: 3 },
         { id: 7, description: 'Alexandre Trevisan', checked: true, order: 1},
         { id: 8, description: 'Alessandro', checked: false, order: 2 },
-        { id: 9, description: 'Akanbi', checked: false, order: 3 },
+        { id: 9, description: 'Akanbi', checked: true, order: 3 },
       ],
       selectedList: [],
       unselectedList: []
@@ -127,6 +130,10 @@ export default {
   & &__list-items-container{
     color: #555;
     font-size: .9em;
+
+    &.-padding-large {
+      padding: 0px 15px;
+    }
   }
 
   & &__list-item {
