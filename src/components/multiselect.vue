@@ -55,12 +55,7 @@ export default {
   data() {
     return {
       descriptionFilter: '',
-      items: [
-        { id: 1, description: 'Alexandre Trevisan', checked: true, order: 1},
-        { id: 1, description: 'Alexandre Rodrigues Mendes', checked: false, order: 1},
-        { id: 2, description: 'Ramon Schmidt Rocha', checked: false, order: 2 },
-        { id: 3, description: 'Frederico Macedo', checked: true, order: 3 },
-      ],
+      items: this.userData,
       selectedList: [],
       selectedFilter: 'all',
       itemsFilteredByDescription: [],
@@ -68,7 +63,8 @@ export default {
     }
   },
   props: {
-    type: String
+    type: String,
+    userData: Array
   },
   created() {
     this.selectedList = this.items;

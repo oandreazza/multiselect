@@ -30,6 +30,7 @@
     "file-loader": "^1.1.4",
     "jest": "^22.4.2",
     "node-sass": "^4.5.3",
+    "randomstring": "^1.1.5",
     "sass-loader": "^6.0.6",
     "vue-jest": "^2.2.1",
     "vue-loader": "^13.0.5",

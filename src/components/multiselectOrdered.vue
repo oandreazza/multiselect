@@ -4,48 +4,40 @@
     <input class="c-multiselect__input form-control" type="text" placeholder="Filtre pela descrição">
     <div class="c-multiselect__list-items-container -padding-large">
       <label>Selecionados</label>
-      <ul class="list-group">
-        <li v-for="(item, index) in selectedList" :key="index" 
-          class="c-multiselect__list-item list-group-item list-group-item-action" @click="toggleItem(index, item)">
-          <div>{{ item.description }}</div>
-          <div class="l-list-icon-container">
-            <i class="c-multiselect__filter-checked fa fa-check" v-if="item.checked" ></i>
-          </div>
-        </li>
-      </ul>
+      <div class="c-multiselect__list">
+        <ul class="list-group">
+          <multiselectitem v-for="(item, index) in selectedList" :key="index" :index="index" :item="item" @toggle="toggleItem" />
+        </ul>
+      </div>
     </div>
     <div class="c-multiselect__list-items-container -padding-large">
       <label>Não selecionados</label>
-      <ul class="list-group">
-        <li v-for="(item, index) in unselectedList" :key="index" 
-          class="c-multiselect__list-item list-group-item list-group-item-action" @click="toggleItem(index, item)">
-          <div>{{ item.description }}</div>
-          <div class="l-list-icon-container">
-            <i class="c-multiselect__filter-checked fa fa-check" v-if="item.checked" ></i>
-          </div>
-        </li>
-      </ul>
+      <div class="c-multiselect__list">
+        <ul class="list-group">
+          <multiselectitem v-for="(item, index) in unselectedList" :key="index" :index="index" :item="item" @toggle="toggleItem" />
+        </ul>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>
+import multiselectitem from './Multiselect/multiselectitem'
 export default {
+   components: { multiselectitem },
   data() {
     return {
-      items: [
-        { id: 1, description: 'Alexandre Trevisan', checked: true, order: 1},
-        { id: 2, description: 'Ramon Schmidt Rocha', checked: false, order: 2 },
-        { id: 3, description: 'Frederico Macedo', checked: false, order: 3 },
-        { id: 4, description: 'Jorge Oleques', checked: true, order: 1},
-        { id: 5, description: 'Mauricio Sganderla', checked: false, order: 2 },
-        { id: 6, description: 'Emerson', checked: false, order: 3 },
-        { id: 7, description: 'Alexandre Trevisan', checked: true, order: 1},
-        { id: 8, description: 'Alessandro', checked: false, order: 2 },
-        { id: 9, description: 'Akanbi', checked: true, order: 3 },
-      ],
+      items: this.userData,
       selectedList: [],
       unselectedList: []
+    }
+  },
+  props: {
+    userData: {
+      type: Array,
+      required: true,
+      default: []
     }
   },
   created() {
@@ -70,7 +62,8 @@ export default {
     getUnchosen() {
       this.selectedList = Object.assign({}, this.uncheckedList);
     },
-    toggleItem(index, item) {
+    toggleItem(payload) {
+      let { index, item } = payload
       item.checked = (!item.checked)
       if(item.checked){
         this.selectedList.push(item)
@@ -134,6 +127,11 @@ export default {
     &.-padding-large {
       padding: 0px 15px;
     }
+  }
+
+  & &__list{
+    max-height: 180px;
+    overflow-y: auto;
   }
 
   & &__list-item {
