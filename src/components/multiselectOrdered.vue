@@ -9,14 +9,13 @@
       <multiselectitem v-for="(item, index) in unselectedList" :key="index" :index="index" :item="item" @toggle="toggleItem" />
     </multiselectlist>
   </div>
-
 </template>
 
 <script>
 import multiselectitem from './Multiselect/multiselectitem'
 import multiselectlist from './Multiselect/multiselectlist'
 export default {
-   components: { multiselectitem, multiselectlist },
+  components: { multiselectitem, multiselectlist },
   data() {
     return {
       items: this.userData,
@@ -82,53 +81,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
-
-.l-input-action {
-  margin-right: 5px;
-  cursor: pointer;
-}
-
-.l-list-icon-container {
-  margin-left: auto;
-}
-
-.c-multiselect {
-  position: relative;
-  font-family: 'Roboto', sans-serif;
-
-  & &__input {
-    padding-right: 100px;
-  }  
-
-  & &__actions {
-    color: #6c757d;
-    position: absolute;
-    right: 0px;
-    top: 9px;
-    padding: 0px 5px;
-  }
-
-  & &__list-items-container{
-    color: #555;
-    font-size: .9em;
-
-    &.-padding-large {
-      padding: 0px 15px;
-    }
-  }
-
-  & &__list{
-    max-height: 180px;
-    overflow-y: auto;
-  }
-
-  & &__list-item {
-    display: flex;
-    align-items: center;
-    padding: .5rem 1rem;
-  }
-}
-</style>
