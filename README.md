@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/oandreazza/multiselect.svg?branch=master)](https://travis-ci.org/oandreazza/multiselect)
 # componentsvue
 
 > A Vue.js project
