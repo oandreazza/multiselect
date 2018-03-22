@@ -2,30 +2,21 @@
   <div class="c-multiselect form-group">
     <label>Devedores</label>
     <input class="c-multiselect__input form-control" type="text" placeholder="Filtre pela descrição">
-    <div class="c-multiselect__list-items-container -padding-large">
-      <label>Selecionados</label>
-      <div class="c-multiselect__list">
-        <ul class="list-group">
-          <multiselectitem v-for="(item, index) in selectedList" :key="index" :index="index" :item="item" @toggle="toggleItem" />
-        </ul>
-      </div>
-    </div>
-    <div class="c-multiselect__list-items-container -padding-large">
-      <label>Não selecionados</label>
-      <div class="c-multiselect__list">
-        <ul class="list-group">
-          <multiselectitem v-for="(item, index) in unselectedList" :key="index" :index="index" :item="item" @toggle="toggleItem" />
-        </ul>
-      </div>
-    </div>
+    <multiselectlist label="Selecionado">
+      <multiselectitem v-for="(item, index) in selectedList" :key="index" :index="index" :item="item" @toggle="toggleItem" />
+    </multiselectlist>
+    <multiselectlist label="Não selecionado">
+      <multiselectitem v-for="(item, index) in unselectedList" :key="index" :index="index" :item="item" @toggle="toggleItem" />
+    </multiselectlist>
   </div>
 
 </template>
 
 <script>
 import multiselectitem from './Multiselect/multiselectitem'
+import multiselectlist from './Multiselect/multiselectlist'
 export default {
-   components: { multiselectitem },
+   components: { multiselectitem, multiselectlist },
   data() {
     return {
       items: this.userData,
