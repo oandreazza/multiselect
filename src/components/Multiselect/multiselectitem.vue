@@ -4,7 +4,7 @@
         <div>{{ item.description }}</div>
         <div class="l-list-icon-container">
             <span v-if="item.checked" class="c-multiselect__icon-checked">
-            <i class="fa fa-check"></i>
+                <i class="fa fa-check"></i>
             </span>
         </div>
     </li>

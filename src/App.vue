@@ -124,6 +124,12 @@ export default {
     margin-top: 15px;
   }
 
+  & &__action {
+    color:rgb(67, 127, 238);
+    cursor: pointer;
+    font-size: 20px
+  }
+
   & &__list{
     max-height: 180px;
     overflow-y: auto;
