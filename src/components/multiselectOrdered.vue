@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import multiselectitem from './Multiselect/multiselectitem'
-import multiselectlist from './Multiselect/multiselectlist'
+import multiselectitem from './Multiselect/Multiselectitem'
+import multiselectlist from './Multiselect/Multiselectlist'
 export default {
   components: { multiselectitem, multiselectlist },
   data() {

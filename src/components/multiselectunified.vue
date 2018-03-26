@@ -1,30 +1,30 @@
 <template>
   <div class="c-multiselect form-group">
     <div class="row">
-      <div class="col-9">
-        <label>Devedores</label>
+      <div class="col-8">
+        <label>Devedores ({{  this.checkedList.length }})</label>
       </div>
-      <div class="col c-multiselect__action" style="text-align:right">
-        <span @click="doState(true)">
-         <i class="far fa-check-square"></i>
-        </span>
-      </div>
-      <div class="col c-multiselect__action" >
-        <span @click="doState(false)">
-           <i class="far fa-square"></i>
+      <div class="col c-multiselect__action align-baseline" >
+        <span @click="doState()" class="align-baseline">
+          {{ toggleSelectText }}
         </span>
       </div>
     </div>
-        <input class="c-multiselect__input form-control" type="text" @keyup.enter="filterByDescription" v-model="descriptionFilter" placeholder="Filtre pela descrição">
+    <input class="c-multiselect__input form-control" type="text" @keyup="filterByDescription" v-model="descriptionFilter" placeholder="Filtre pela descrição">
     <multiselectlist>
       <multiselectitem v-for="(item, index) in selectedList" :key="index" :index="index" :item="item" @toggle="toggleItem" />
     </multiselectlist>
+    <div class="c-multiselect__result row">
+      <div class="col-12">
+        Total {{  this.selectedList.length  }}
+      </div>       
+    </div>
   </div>
 </template>
 
 <script>
-import multiselectitem from "./Multiselect/multiselectitem";
-import multiselectlist from "./Multiselect/multiselectlist";
+import multiselectitem from "./Multiselect/Multiselectitem";
+import multiselectlist from "./Multiselect/Multiselectlist";
 
 export default {
   components: { multiselectitem, multiselectlist },
@@ -32,7 +32,9 @@ export default {
     return {
       items: this.userData,
       selectedList: [],
-      descriptionFilter: ""
+      descriptionFilter: "",
+      toggleSelect: true,
+      toggleSelectText: "Selecionar Todos"
     };
   },
   props: {
@@ -62,9 +64,11 @@ export default {
       item.checked = !item.checked;
     },
 
-    doState(state){
+    doState(){
+     let toggle = this.toggleSelect = !this.toggleSelect
+     this.toggleSelectText = !this.toggleSelect ? 'Desmarcar todos' : 'Selecionar todos'
      let allItemsSelectd = this.items.map( item =>  {
-        item.checked = state
+        item.checked = toggle
         return item
       })
       

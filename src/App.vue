@@ -127,12 +127,19 @@ export default {
   & &__action {
     color:rgb(67, 127, 238);
     cursor: pointer;
-    font-size: 20px
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  & &__result {
+    margin-top: 10px;
+    text-align: right;
   }
 
   & &__list{
     max-height: 180px;
     overflow-y: auto;
+    border: 1px solid #dadddd;
   }
   
   & &__list-item {
