@@ -129,6 +129,7 @@ export default {
     cursor: pointer;
     font-size: 12px;
     margin-top: 10px;
+    text-align: right;
   }
 
   & &__result {

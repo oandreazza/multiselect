@@ -1,7 +1,7 @@
 <template>
   <div class="c-multiselect form-group">
     <div class="row">
-      <div class="col-8">
+      <div class="col-8 ">
         <label>Devedores ({{  this.checkedList.length }})</label>
       </div>
       <div class="col c-multiselect__action align-baseline" >
