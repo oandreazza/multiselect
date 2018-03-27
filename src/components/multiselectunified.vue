@@ -34,7 +34,7 @@ export default {
       selectedList: [],
       descriptionFilter: "",
       toggleSelect: true,
-      toggleSelectText: "Selecionar Todos"
+      toggleSelectText: "Desmarcar Todos"
     };
   },
   props: {
@@ -66,7 +66,7 @@ export default {
 
     doState(){
      let toggle = this.toggleSelect = !this.toggleSelect
-     this.toggleSelectText = !this.toggleSelect ? 'Desmarcar todos' : 'Selecionar todos'
+     this.toggleSelectText = !this.toggleSelect ? 'Selecionar todos' : 'Desmarcar todos' 
      let allItemsSelectd = this.items.map( item =>  {
         item.checked = toggle
         return item

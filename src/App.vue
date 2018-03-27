@@ -2,31 +2,31 @@
   <div id="app">
     <div class="container">
       <div class="row">
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <multiselect :userData="getData()" type="named"></multiselect>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <multiselect :userData="getData()" type="counter"></multiselect>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
+         <div class="col-12 col-lg-6">
           <div class="card">
             <div class="card-body">
               <multiselectOrdered :userData="getData()"></multiselectOrdered>
             </div>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
           <div class="card">
             <div class="card-body">
               <multiselectunified :userData="getData()"></multiselectunified>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <multiselect :userData="getData()" type="named"></multiselect>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <multiselect :userData="getData()" type="counter"></multiselect>
             </div>
           </div>
         </div>
