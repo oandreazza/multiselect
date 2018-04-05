@@ -2,6 +2,11 @@
   <div id="app">
     <div class="container">
       <div class="row">
+        <div class="col-12 col-lg-6">
+          <multiselectunifiedstylized :userData="getData()" :loading="true" type="counter"></multiselectunifiedstylized>
+        </div>
+      </div>
+      <div class="row">
          <div class="col-12 col-lg-6">
           <div class="card">
             <div class="card-body">
@@ -30,6 +35,9 @@
             </div>
           </div>
         </div>
+        <div class="col-12 col-lg-6">
+          <multiselectunifiedstylized :userData="getData()" type="counter"></multiselectunifiedstylized>
+        </div>
       </div>
     </div>
   </div>
@@ -40,10 +48,11 @@ import multivalored from "./components/multivalored";
 import multiselect from "./components/multiselect";
 import multiselectOrdered from "./components/multiselectOrdered";
 import multiselectunified from './components/multiselectunified'
+import multiselectunifiedstylized from './components/multiselectunifiedstylized'
 import randomstring from 'randomstring'
 export default {
   name: "app",
-  components: { multivalored, multiselect, multiselectOrdered, multiselectunified },
+  components: { multivalored, multiselect, multiselectOrdered, multiselectunified, multiselectunifiedstylized },
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
@@ -101,6 +110,7 @@ export default {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   margin-top: 15px;
+  margin-bottom: 30px;
   
   & &__input-container {
     position: relative;
@@ -118,10 +128,20 @@ export default {
     padding: 0px 5px;
   }
 
+  & &__header {
+    background-color: #fff;
+    padding: 1.25rem;
+  }
+
+  & &__body {
+    padding: 0.3em 1.25em;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
   & &__list-items-container{
     color: #555;
     font-size: .9em;
-    margin-top: 15px;
   }
 
   & &__action {
@@ -137,16 +157,11 @@ export default {
     text-align: right;
   }
 
-  & &__list{
-    max-height: 180px;
-    overflow-y: auto;
-    border: 1px solid #dadddd;
-  }
   
   & &__list-item {
     display: flex;
     align-items: center;
-    padding: .5rem 1rem;
+    padding: 1rem 1rem;
 
     &.is-selected {
       color: #000;

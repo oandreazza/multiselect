@@ -1,6 +1,6 @@
 <template>
     <li
-        class="c-multiselect__list-item list-group-item list-group-item-action" @click="toogle">
+        class="c-multiselect__list-item list-group-item" @click="toogle">
         <div>{{ item.description }}</div>
         <div class="l-list-icon-container">
             <span v-if="item.checked" class="c-multiselect__icon-checked">

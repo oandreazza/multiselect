@@ -1,8 +1,9 @@
 <template>
-      <div class="c-multiselect__list-items-container -padding-large">
+    <div class="c-multiselect__list-items-container">
       <label v-if="label">{{ label }}</label>
       <div class="c-multiselect__list">
-        <ul class="list-group">
+        <list-loading v-if="loading"></list-loading>
+        <ul v-else class="list-group list-group-flush">
           <slot/>
         </ul>
       </div>
@@ -10,10 +11,15 @@
 </template>
 
 <script>
+import ListLoading from '../ListLoading'
 export default {
+    components: { ListLoading },
     props:{
         label:{
             type: String
+        },
+        loading:{
+            type: Boolean
         }
     }
 }
