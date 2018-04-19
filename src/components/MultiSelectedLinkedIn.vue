@@ -2,26 +2,18 @@
   <div class="c-multiselect card" style="height: 413px">
 		<div class="card-header c-multiselect__header">
 			<div class="row">
-				<div class="col-8 ">
-						<label class="c-multiselect__label">{{ label }} ({{ this.checkedList.length }})</label>
+				<div class="col-6 ">
+						<label class="c-multiselect__label">{{ label }}</label>
 				</div>
-				<div v-if="!hasExtraRecord" class="col-4 c-multiselect__action">
-                    <span @click="doState()">
-                            {{ toggleSelectText }}
+				<div class="col-6 c-multiselect__action">
+                    <span @click="filterChecked(false)">
+                        Visualizar Desselecionados
                     </span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
 					<input class="c-multiselect__input form-control form-control-sm l-input"  type="text" @keyup="filterByDescription" v-model="descriptionFilter" placeholder="Filtre pela descrição">
-                    <div class="c-multiselect__actions">      
-                        <span @click="filterChecked(true)" :class="[!onlySelected ? 'unchecked' : '']" class="l-input-action c-multiselect__filter-chosen" title="Filtrar selecionados">
-                            <i class="fa fa-list-ul"></i>
-                        </span>
-                        <span @click="filterChecked(false)" :class="[onlySelected ? 'unchecked' : '']" class="l-input-action c-multiselect__filter-chosen" title="Filtrar não selecionados">
-                            <i class="fa fa-bars"></i>
-                        </span>
-                    </div>
                 </div>	
 			</div>
 		</div>	
@@ -35,6 +27,12 @@
                 </Multi-select-item>
 			</Multi-select-list>
 		</div>
+        <div class="card-footer  c-multiselect__footer">
+            <Multi-select-footer :btn-label="toggleSelectText" @btn-click="doState" :quantity="totalSelected">
+                
+            </Multi-select-footer>
+        </div>
+        
         <Modal v-if="hasExtraRecord" :show="showModal" @close="closeModal"></Modal>
 	</div>
 </template>
@@ -44,10 +42,11 @@ import ListNotification  from "./common/ListNotification";
 import ListLoading from './common/ListLoading'
 import MultiSelectList from './Multiselect/Multiselectlist'
 import MultiSelectItem from './Multiselect/Multiselectitem'
+import MultiSelectFooter from './Multiselect/MultiSelectFooter'
 import ListEdit from './Multiselect/ListEdit'
 import Modal from './common/Modal'
 export default {
-    components: { ListNotification, ListLoading, MultiSelectList, MultiSelectItem, ListEdit, Modal },
+    components: { ListNotification, ListLoading, MultiSelectList, MultiSelectItem, ListEdit, Modal, MultiSelectFooter },
     data() {
 			return {
 				listData: [],
@@ -93,7 +92,10 @@ export default {
 			},
 			searchedWithoutResults() {
 				return this.selectedListFilteredByDescription.length == 0 && this.descriptionFilter != ""
-			}
+			},
+            totalSelected(){
+                return this.checkedList.length;
+            }
 			
 		},
 		methods: {

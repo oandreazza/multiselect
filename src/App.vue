@@ -127,6 +127,13 @@ export default {
   font-weight: 400;
   margin-top: 15px;
   margin-bottom: 30px;
+
+  & &__footer{
+    background-color: #fff;
+    font-size: .9em;
+    color: #6c757d;
+
+  }
   
   & &__input-container {
     position: relative;
