@@ -3,7 +3,19 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-lg-6">
-          <multiselectunifiedstylized :userData="getData()" :loading="true" type="counter"></multiselectunifiedstylized>
+          <multiselectunifiedstylized  :userData="getData()" :loading="true" type="counter"></multiselectunifiedstylized>
+          
+        </div>
+       <div class="col-12 col-lg-6">
+          <multiselectlinkedin label="Tarefa com selecionados" :items="getData(500)"></multiselectlinkedin>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <multiselectlinkedin label="Tarefas sem selecionados" :items="getData(200, false)"></multiselectlinkedin>
+        </div>
+        <div class="col-12 col-lg-6">
+          <multiselectlinkedin label="Itens com Mix" has-extra-record="true" :items="getData(200, false)"></multiselectlinkedin>
         </div>
       </div>
       <div class="row">
@@ -49,10 +61,11 @@ import multiselect from "./components/multiselect";
 import multiselectOrdered from "./components/multiselectOrdered";
 import multiselectunified from './components/multiselectunified'
 import multiselectunifiedstylized from './components/multiselectunifiedstylized'
+import multiselectlinkedin from './components/MultiSelectedLinkedIn'
 import randomstring from 'randomstring'
 export default {
   name: "app",
-  components: { multivalored, multiselect, multiselectOrdered, multiselectunified, multiselectunifiedstylized },
+  components: { multivalored, multiselect, multiselectOrdered, multiselectunified, multiselectunifiedstylized, multiselectlinkedin },
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
@@ -60,11 +73,11 @@ export default {
     }
   },
   methods : {
-    getData (length = 500) {
+    getData (length = 500, defaultChecked = null) {
       let data = []
       var checked = true
       for (let index = 0; index < length; index++) {
-        checked = !checked
+        checked = defaultChecked == null ? !checked : defaultChecked
         data.push({
           id: index, 
           description: randomstring.generate({
@@ -91,6 +104,9 @@ export default {
     margin-top: 15px;
 }
 
+.unchecked{
+  color: rgba(0,0,0,.125)
+}
 
 .l-input-action {
   margin-right: 5px;
@@ -120,12 +136,17 @@ export default {
     padding-right: 100px;
   }  
 
+  & &__icon{
+    margin-right: 8px;
+  }
+
   & &__actions {
     color: #6c757d;
     position: absolute;
-    right: 0px;
-    top: 9px;
+    right: 17px;
+    top: 5px;
     padding: 0px 5px;
+    cursor: pointer;
   }
 
   & &__header {
