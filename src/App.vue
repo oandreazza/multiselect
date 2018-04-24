@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-lg-6">
-          <multiselectunifiedstylized  :userData="getData()" :loading="true" type="counter"></multiselectunifiedstylized>
+          <multiselectunifiedstylized v-show="false"  :userData="getData()" :loading="true" type="counter"></multiselectunifiedstylized>
           
         </div>
        <div class="col-12 col-lg-6">
@@ -130,8 +130,10 @@ export default {
 
   & &__footer{
     background-color: #fff;
-    font-size: .9em;
+    font-size: .75em;
     color: #6c757d;
+    height: 50px;
+    padding: 0.4rem 1.25rem;
 
   }
   

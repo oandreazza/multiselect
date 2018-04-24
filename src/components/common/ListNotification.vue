@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-top:60px">
+    <div style="margin-top:30px">
         <div class="row">
             <div class="col-4 mx-auto">
                 <div class="w-100 p-3 text-center">
