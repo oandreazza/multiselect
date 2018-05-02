@@ -132,7 +132,7 @@ export default {
     background-color: #fff;
     font-size: .75em;
     color: #6c757d;
-    height: 50px;
+    min-height: 50px;
     padding: 0.4rem 1.25rem;
 
   }
